@@ -50,7 +50,7 @@ public class LifeCycleImageCounterServlet extends HttpServlet{
 	
 		String countStr = Integer.toString(count);
 		for(int i=0; i<countStr.length(); i++){
-			out.println("<img src=\""+countStr.charAt(i)+".png\">");
+			out.println("<img src=\"img\\"+countStr.charAt(i)+".png\">");
 		}
 		
 			
