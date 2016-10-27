@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/HttpServletRequestDemo")
+@WebServlet("/Request")
 public class HttpServletRequestDemo extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		 * http://192.168.12.12/servletSite/Request?name=kim&age=25
+		 */
 		response.setContentType("text/html;charset=euc-kr");
 		
 		PrintWriter out = response.getWriter();
@@ -31,6 +34,12 @@ public class HttpServletRequestDemo extends HttpServlet{
 		String remoteUser = request.getRemoteUser();
 		/***** 소켓의 정보 *****/
 		
+		/*
+		 * http://192.168.12.12/servletSite/Request?name=kim&age=25
+		 */
+		String queryString = request.getQueryString();
+		String name = request.getParameter("name");
+		String age = request.getParameter("age");
 		
 		stringB.append("===> StringBuffer사용");		
 		out.println("<h1>HttpServletRequest</h1><hr/><br/><br/>");
@@ -48,6 +57,14 @@ public class HttpServletRequestDemo extends HttpServlet{
 		out.println("<li>remoteHost : "+ remoteHost +"</li>");
 		out.println("<li>remotePort : "+ remotePort +"</li>");
 		out.println("<li>remoteUser : "+ remoteUser +"</li>");
+		
+		out.println("<li>queryString : "+ queryString +"</li>");
+		out.println("<li>name Parameter : "+ name +"</li>");
+		out.println("<li>age Parameter : "+ age +"</li>");
+		
+		
+		
+		
 		out.println("</ol>");
 	}
 }
