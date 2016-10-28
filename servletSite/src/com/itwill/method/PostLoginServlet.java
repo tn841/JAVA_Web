@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/post_login.do")
 public class PostLoginServlet extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.sendRedirect("05-02.login_post.html");
+	}
 	/*
 	 * POST방식의 요청을 처리하는메쏘드
 	 */
@@ -37,6 +41,11 @@ public class PostLoginServlet extends HttpServlet {
 		 */
 		String id=request.getParameter("id");
 		String pass=request.getParameter("pass");
+		if(  (id == null || id.equals(""))  || (pass == null || pass.equals(""))){
+			response.sendRedirect("05-02.login_post.html");
+			return;
+		}
+		
 		
 		/*
 		  2. DataBase 접근해서 로그인 수행

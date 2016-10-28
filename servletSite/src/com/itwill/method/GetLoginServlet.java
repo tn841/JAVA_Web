@@ -37,6 +37,10 @@ public class GetLoginServlet extends HttpServlet {
 		 */
 		String id=request.getParameter("id");
 		String pass=request.getParameter("pass");
+		if(  (id == null || id.equals(""))  || (pass == null || pass.equals(""))){
+			response.sendRedirect("05-01.login_get.html");
+			return;
+		}
 		
 		/*
 		  2. DataBase 접근해서 로그인 수행
