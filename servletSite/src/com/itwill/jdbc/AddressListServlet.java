@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/address_list.do")
-public class AddressListServelt extends HttpServlet {
+public class AddressListServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class AddressListServelt extends HttpServlet {
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@210.16.214.203:1521:XE","user21", "user21");
 			Statement stmt = con.createStatement();
 			
-			ResultSet rs = stmt.executeQuery("select * from address order by no");
+			ResultSet rs = stmt.executeQuery("select * from address order by no desc");
 			/**********************************************************/
 			
 			
@@ -43,22 +43,22 @@ public class AddressListServelt extends HttpServlet {
 			out.println("<body>");
 			out.println("<br>");
 			out.println("<p align=center><font size=5 color=#0000FF>◈◈ JDBC 테스트 1◈◈</font><br>");
-			out.println(
-					"<table width=80% align=center border=1 cellspacing=0 bordercolordark=white bordercolorlight=#ADADAD>");
+			out.println("<a href='05-04.address_insert_form.html'>주소록쓰기폼</a>");
+			out.println("<table width=80% align=center border=1 cellspacing=0 bordercolordark=white bordercolorlight=#ADADAD>");
 			out.println("<tr bgcolor=#000000 class=t1>");
-			out.println("<td align=center height=20 width=10%><font color=#FFFFFF>no</font></td>");
+//			out.println("<td align=center height=20 width=10%><font color=#FFFFFF>no</font></td>");
 			out.println("<td align=center height=20 width=10%><font color=#FFFFFF>id</font></td>");
 			out.println("<td align=center height=20 width=20%><font color=#FFFFFF>이름</font></td>");
-			out.println("<td align=center height=20 width=30%><font color=#FFFFFF>전화번호</font></td>");
-			out.println("<td align=center height=20 width=20%><font color=#FFFFFF>주소</font></td>");
+//			out.println("<td align=center height=20 width=30%><font color=#FFFFFF>전화번호</font></td>");
+//			out.println("<td align=center height=20 width=20%><font color=#FFFFFF>주소</font></td>");
 			out.println("</tr>");
 			while(rs.next()){
 				out.println("<tr class=t1>");
-				out.println("<td align=center width=15% height=20>"+rs.getInt(1)+"</td>");
-				out.println("<td align=center width=15% height=20>"+rs.getString(2)+"</td>");
-				out.println("<td align=center width=20% height=20>"+rs.getString(3)+"</td>");
-				out.println("<td align=center width=20% height=20>"+rs.getString(4)+"</td>");
-				out.println("<td align=center width=30% height=20>"+rs.getString(5)+"</td>");
+				//out.println("<td align=center width=15% height=20>"+rs.getInt(1)+"</td>");
+				out.println("<td align=center width=15% height=20> <a href='address_detail.do?no="+rs.getInt(1)+"'>"+rs.getString(2)+"</a> </td>");
+				out.println("<td align=center width=15% height=20> <a href='address_detail.do?no="+rs.getInt(1)+"'>"+rs.getString(3)+"</a> </td>");
+				//out.println("<td align=center width=20% height=20>"+rs.getString(4)+"</td>");
+				//out.println("<td align=center width=30% height=20>"+rs.getString(5)+"</td>");
 				out.println("</tr>");		
 			}
 
