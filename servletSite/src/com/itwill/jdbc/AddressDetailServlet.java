@@ -57,8 +57,8 @@ public class AddressDetailServlet extends HttpServlet {
 			//3. 응답 보내기
 			out.println("<h1>"+name+"님 상세정보</h1><hr/>");
 			out.println("<a href='address_list.do'>주소록리스트</a>&nbsp;&nbsp;");
-			out.println("<a href='05-04.address_insert_form.html'>주소록쓰기폼</a>");
-			out.println("<a href='address_delete.do?no=34'>삭제</a>");
+			out.println("<a href='05-04.address_insert_form.html'>주소록쓰기폼</a>&nbsp;&nbsp;");
+			out.println("<a href='addr_delete.do?no="+no+"'>삭제</a>");
 			out.println("<ol>");
 			out.println("<li>번호:"+no+"</li>");
 			out.println("<li>아이디:"+id+"</li>");
